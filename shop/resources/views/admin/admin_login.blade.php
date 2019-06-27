@@ -12,7 +12,33 @@
 
     </head>
     <body>
-        <div id="loginbox">            
+        <div id="loginbox">
+
+
+            {{-- Flash message for invalid username and password  --}}
+            @if(Session::has('flash_message_error'))
+                
+                <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        <strong>{!! session('flash_message_error') !!}</strong>
+                </div>
+            @endif
+                {{-- end of the flash message --}}
+
+                @if(Session::has('flash_message_success'))
+                
+                <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        <strong>{!! session('flash_message_success') !!}</strong>
+                </div>
+            @endif
+
+
+
         <form id="loginform" class="form-vertical" method="POST" action="{{ url('admin') }}">{{ csrf_field() }}
 				 <div class="control-group normal_text"> <h3><img src="{{ ('images/backend_images/logo.png') }}" alt="Logo" /></h3></div>
                 <div class="control-group">
@@ -52,6 +78,7 @@
         
         <script src="{{ ('js/backend_js/jquery.min.js') }}"></script>  
         <script src="{{ ('js/backend_js/matrix.login.js') }}"></script> 
+        <script src="{{ asset('js/backend_js/bootstrap.min.js') }}"></script> 
     </body>
 
 </html>
