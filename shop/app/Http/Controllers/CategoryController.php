@@ -21,4 +21,10 @@ class CategoryController extends Controller
         }
         return view('admin.categories.add_category');
     }
+
+
+    //view Category Function
+    public function viewCategories(){
+        return view('admin.categories.view_categories');
+    }
 }
