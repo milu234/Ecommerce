@@ -42,6 +42,15 @@ class CategoryController extends Controller
     }
 
 
+    //Delete Category Function
+    public function deleteCategory($id = NULL){
+        if(!empty($id)){
+            Category::where(['id'=>$id])->delete();
+            return redirect()->back()->with('flash_message_success','Category Deleted Succesfully');
+        }
+    }
+
+
     //view Category Function
     public function viewCategories(){
         $categories = Category::get();
