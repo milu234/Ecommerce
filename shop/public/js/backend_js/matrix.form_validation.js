@@ -54,20 +54,22 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
-	
+
+
+	// Add Category Validation
 	$("#number_validate").validate({
 		rules:{
-			min:{
+			category_name:{
 				required: true,
-				min:10
+				
 			},
-			max:{
+			description:{
 				required:true,
-				max:24
+			
 			},
-			number:{
+			url:{
 				required:true,
-				number:true
+				
 			}
 		},
 		errorClass: "help-inline",

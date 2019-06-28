@@ -5,7 +5,7 @@
 <div id="content">
         <div id="content-header">
           <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">  Categories </a> <a href="#" class="current">Add Category</a> </div>
-          <h1>Form validation</h1>
+          <h1>Categories</h1>
         </div>
         <div class="container-fluid"><hr>
           <div class="row-fluid">
@@ -15,33 +15,33 @@
                   <h5>Add Category</h5>
                 </div>
                 <div class="widget-content nopadding">
-                  <form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                <form class="form-horizontal" method="post" action="{{ url('/admin/add-category') }}" name="add_category" id="add_category" novalidate="novalidate">
                     <div class="control-group">
-                      <label class="control-label">Your Name</label>
+                      <label class="control-label">Category Name</label>
                       <div class="controls">
                         <input type="text" name="required" id="required">
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label">Your Email</label>
+                      <label class="control-label">Description</label>
                       <div class="controls">
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="description" id="description">
                       </div>
                     </div>
-                    <div class="control-group">
+                    {{-- <div class="control-group">
                       <label class="control-label">Date (only Number)</label>
                       <div class="controls">
                         <input type="text" name="date" id="date">
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="control-group">
-                      <label class="control-label">URL (Start with http://)</label>
+                      <label class="control-label">URL</label>
                       <div class="controls">
                         <input type="text" name="url" id="url">
                       </div>
                     </div>
                     <div class="form-actions">
-                      <input type="submit" value="Validate" class="btn btn-success">
+                      <input type="submit" value="Add Category" class="btn btn-success">
                     </div>
                   </form>
                 </div>
