@@ -57,7 +57,7 @@ $(document).ready(function(){
 
 
 	// Add Category Validation
-	$("#number_validate").validate({
+	$("#add_category").validate({
 		rules:{
 			category_name:{
 				required: true,
@@ -82,6 +82,8 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	
 	
 	$("#password_validate").validate({
 		rules:{
