@@ -50,7 +50,7 @@ class ProductsController extends Controller
                    //resize the images 
                    Image::make($image_tmp)->save($large_image_path);
                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
-                   Image::make($image_tmp)->resize(300,300)->save($large_image_path);
+                   Image::make($image_tmp)->resize(300,300)->save($small_image_path);
 
                    //store image name in the project folder
                    $product->image = $filename;
@@ -77,6 +77,12 @@ class ProductsController extends Controller
 
 
     public function viewProducts(Request $request){
-        return view('admin.products.view_products');
+        $products = Product::get();
+        $products = json_decode(json_encode($products));
+        foreach($products as $key => $val ){
+            $category_name = Category::where(['id'=>$val->category_id])->first();
+            $products[$key]->category_name = $category_name->name;
+        }
+        return view('admin.products.view_products')->with(compact('products'));
     }
 }

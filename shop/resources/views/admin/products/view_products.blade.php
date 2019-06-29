@@ -4,8 +4,8 @@
 
 <div id="content">
         <div id="content-header">
-          <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Products</a> </div>
-          <h1>VProducts</h1>
+          <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Products</a><a href="#" class="current">View Products</a> </div>
+          <h1>View Products</h1>
 
              {{-- Flash message for invalid username and password  --}}
              @if(Session::has('flash_message_error'))
@@ -46,11 +46,13 @@
                     <thead>
                       <tr>
                         <th>Product  Id</th>
-                        <th>Category Id</th>
+                        <th>Category  Id</th>
+                        <th>Category Name</th>
                         <th>Product Name</th>
                         <th>Product Code</th>
                         <th>Product Color</th>
                         <th>Price</th>
+                        <th>Image</th>
                         <th>Actions</th>
                         
                       </tr>
@@ -60,10 +62,17 @@
                     <tr class="gradeX">
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->category_id }}</td>
+                    <td>{{ $product->category_name }}</td>
                     <td>{{ $product->product_name }}</td>
                     <td>{{ $product->product_code }}</td>
                     <td>{{ $product->product_color }}</td>
                     <td>{{ $product->price }}</td>
+
+                    <td>
+                        @if(!empty($product->image))
+                        <img src ="{{  asset('/images/backend_images/products/small/'.$product->image) }}" style="width:50px;">
+                    @endif
+                    </td>
                     <td class="center"><a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a> <a id="delPro" href="{{ url('/admin/delete-product/'.$product->id ) }}" class="btn btn-danger btn-mini">Delete</a></td>
                        
                     @endforeach
