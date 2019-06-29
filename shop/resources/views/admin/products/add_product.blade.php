@@ -6,6 +6,32 @@
         <div id="content-header">
           <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Products </a> <a href="#" class="current">Add Product</a> </div>
           <h1>Products</h1>
+
+
+            {{-- Flash message for invalid username and password  --}}
+            @if(Session::has('flash_message_error'))
+                
+            <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    <strong>{!! session('flash_message_error') !!}</strong>
+            </div>
+        @endif
+            {{-- end of the flash message --}}
+
+            @if(Session::has('flash_message_success'))
+            
+            <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    <strong>{!! session('flash_message_success') !!}</strong>
+            </div>
+        @endif
+
+
+
         </div>
         <div class="container-fluid"><hr>
           <div class="row-fluid">
@@ -15,7 +41,7 @@
                   <h5>Add Product</h5>
                 </div>
                 <div class="widget-content nopadding">
-                  <form class="form-horizontal" method="post" action="{{ url('/admin/add-product') }}" name="add_product" id="add_product" novalidate="novalidate">{{ csrf_field() }}
+                  <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/add-product') }}" name="add_product" id="add_product" novalidate="novalidate">{{ csrf_field() }}
                     
                     
                {{-- under category      --}}
@@ -68,13 +94,13 @@
                           <input type="text" name="price" id="price">
                         </div>
 
-                        
+                          {{-- // befor dealing with the image always use composer.phar require intervention/image --}}
                         <div class="control-group">
                           <label class="control-label">Image</label>
                           <div class="controls">
                             <input type="file" name="image" id="image">
                           </div>
-                        </div>
+                      </div>
 
 
                     
