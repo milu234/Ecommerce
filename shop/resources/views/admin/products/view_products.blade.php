@@ -45,6 +45,8 @@
                   <table class="table table-bordered data-table">
                     <thead>
                       <tr>
+                        <?php $number = 1; ?>
+                        <th>Sr.No</th>
                         <th>Product  Id</th>
                         <th>Category  Id</th>
                         <th>Category Name</th>
@@ -60,6 +62,7 @@
                     <tbody>
                     @foreach ($products as $product)
                     <tr class="gradeX">
+                    <td>{{ $number }}</td>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->category_id }}</td>
                     <td>{{ $product->category_name }}</td>
@@ -74,9 +77,7 @@
                     @endif
                     </td>
                     <td class="center">
-                        <a  href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
-                      <a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a>
-                      <a id="delPro" href="{{ url('/admin/delete-product-image/') }}" class="btn btn-danger btn-mini">Delete</a>
+                        <a  href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a><a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a><a id="delProduct" href="{{ url('/admin/delete-product/'.$product->id) }}" class="btn btn-danger btn-mini">Del</a>
                       
                     </td>
 
@@ -103,7 +104,7 @@
           
       
   {{-- *****************************************Modal Popup********************************************************* --}}
-  
+          <?php $number++;  ?>
                        
                     @endforeach
                        </tbody>

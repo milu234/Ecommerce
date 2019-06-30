@@ -282,6 +282,18 @@ $(document).ready(function(){
 	});
 
 
+	////////////////////////////////Dialogue box///////////////////////////////////////////////////////
+
+
+	$("#delProduct").click(function(){
+		if(confirm('Are you sure , you want to delete this Product??')){
+			return true;
+
+		}
+		return false;
+	});
+
+
 
 
 

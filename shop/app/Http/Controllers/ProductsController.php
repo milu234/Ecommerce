@@ -173,6 +173,13 @@ class ProductsController extends Controller
     }
 
 
+    //Delete Product Functions
+    public function deleteProduct($id = NULL){
+        Product::where(['id'=>$id])->delete();
+        return redirect()->back()->with('flash_message_success','Product has been deleted successfully');
+    }
+
+
 
     //Delete ProductImage Function
     public function deleteProductImage($id = NULL){
