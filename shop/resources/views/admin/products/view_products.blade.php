@@ -77,7 +77,8 @@
                     @endif
                     </td>
                     <td class="center">
-                        <a  href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a><a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a><a id="delProduct" href="{{ url('/admin/delete-product/'.$product->id) }}" class="btn btn-danger btn-mini">Del</a>
+                    <a  href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a><a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a>
+                    <a  id = "delProduct" rel="{{ $product->id }}" rel1="delete-product"  href = "javascript:" class="btn btn-danger btn-mini deleteRecord ">Delete</a>
                       
                     </td>
 

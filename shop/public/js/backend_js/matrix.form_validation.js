@@ -285,12 +285,31 @@ $(document).ready(function(){
 	////////////////////////////////Dialogue box///////////////////////////////////////////////////////
 
 
-	$("#delProduct").click(function(){
-		if(confirm('Are you sure , you want to delete this Product??')){
-			return true;
+	// $("#delProduct").click(function(){
+	// 	if(confirm('Are you sure , you want to delete this Product??')){
+	// 		return true;
 
-		}
-		return false;
+	// 	}
+	// 	return false;
+	// });
+
+
+	$(".deleteRecord").click(function(){
+		 var id = $(this).attr('rel');
+		 var deleteFunction = $(this).attr('rel1');
+		 swal({
+			 title: "Are you Sure?",
+			 text: "You will not be able to recover this record again!!",
+			 type: "warning",
+			 showCancelButton: true,
+			 confirmButtonClass:"btn-danger",
+			 confirmButtonText: "Yes, delete it!"
+
+		 },
+		 	function(){
+				 window.location.href="/admin/"+deleteFunction+"/"+id;
+			 });
+		
 	});
 
 
