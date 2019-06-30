@@ -147,14 +147,7 @@ $(document).ready(function(){
 	});
 
 
-	$("#delCat").click(function(){
-		if(confirm('Are you sure , you want to delete this Category??')){
-			return true;
-
-		}
-		return false;
-	});
-
+	
 
 
 
@@ -302,8 +295,14 @@ $(document).ready(function(){
 			 text: "You will not be able to recover this record again!!",
 			 type: "warning",
 			 showCancelButton: true,
-			 confirmButtonClass:"btn-danger",
-			 confirmButtonText: "Yes, delete it!"
+			 confirmButtonColor:'#3085d6',
+			 cancelButtonColor: '#d33',
+			 confirmButtonClass:"btn btn-success",
+			 cancelButtonClass:"btn btn-danger",
+			 buttonsStyling: false,
+			 confirmButtonText: "Yes, delete it!",
+			 cancelButtonText:'No , Cancel!',
+			 reverseButtons:true
 
 		 },
 		 	function(){

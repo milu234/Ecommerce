@@ -45,7 +45,8 @@
                   <table class="table table-bordered data-table">
                     <thead>
                       <tr>
-                        <th>Category Id</th>
+                        <?php $number = 1; ?>
+                        <th>Sr.No</th>
                         <th>Category Name</th>
                         <th>Category Level</th>
                         <th>Category URL</th>
@@ -56,15 +57,17 @@
                     <tbody>
                     @foreach ($categories as $category)
                     <tr class="gradeX">
-                    <td>{{ $category->id }}</td>
+                    <td>{{ $number }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->parent_id }}</td>
                     <td>{{ $category->url }}</td>
                     <td class="center">
                       <a href="{{ url('/admin/edit-category/'.$category->id ) }}" class="btn btn-primary btn-mini">Edit</a> 
-                      <a id="delCat" href="{{ url('/admin/delete-category/'.$category->id ) }}" class="btn btn-danger btn-mini">Delete</a>
+                    <a  rel="{{ $category->id }}" rel1="delete-category" href="javascript:" class="btn btn-danger btn-mini  deleteRecord ">Delete</a>
                       
                     </td>
+
+                    <?php $number++;  ?>
                        
                     @endforeach
                        </tbody>
