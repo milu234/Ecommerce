@@ -96,17 +96,48 @@ class ProductsController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
+
+
+            if($request->hasFile('image')){
+                $image_tmp = Input::file('image');
+                if($image_tmp->isValid()){
+                    //Save  Images according to the sizes
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $filename = rand(111,99999).'.'.$extension;
+                    $large_image_path = 'images/backend_images/products/large/'.$filename;
+                    $medium_image_path = 'images/backend_images/products/medium/'.$filename;
+                    $small_image_path = 'images/backend_images/products/small/'.$filename;
+ 
+                    //resize the images 
+                    Image::make($image_tmp)->save($large_image_path);
+                    Image::make($image_tmp)->resize(600,600)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(300,300)->save($small_image_path);
+ 
+ 
+ 
+                }
+             }else{
+                 $filename = $data['current_image'];
+             }
+
+             if(empty($data['description'])){
+                 $data['description'] = '';
+             }
+
+
+
             Product::where(['id'=>$id])->update([
                 'category_id' => $data['category_id'],
                 'product_name' => $data['product_name'],
                 'product_code' => $data['product_code'],
                 'product_color' => $data['product_color'],
                 'description' => $data['description'],
-                'price' => $data['price']
+                'price' => $data['price'],
+                'image'=>$filename
 
             ]);
 
-            return redirect('/admin/view-products')->with('flash_message_success','Categories updated Successfully');
+            return redirect('/admin/view-products')->with('flash_message_success','Products updated Successfully');
         }
        // echo "test"; die;
         //Get Product Details
