@@ -170,4 +170,12 @@ class ProductsController extends Controller
 
 
 
+    //Delete Product Function
+    public function deleteProductImage($id = NULL){
+        Product::where(['id'=>$id])->update(['image'=>'']);
+        return redirect()->back()->with('flash_message_success','Product Image had been deleted successfully');
+    }
+
+
+
 }

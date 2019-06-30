@@ -75,7 +75,7 @@
                         <div class="control-group">
                             <label class="control-label">Product Color</label>
                             <div class="controls">
-                            <input type="text" name="product_color" id="product_color"  value="{{ $productDetails->product_color }}"    >
+                            <input type="text" name="product_color" id="product_color"  value="{{ $productDetails->product_color }}"> 
                             </div>
 
 
@@ -100,7 +100,7 @@
                           <div class="controls">
                             <input type="file" name="image" id="image">
                           <input type="hidden" name="current_image" value="{{ $productDetails->image }}">
-                          <img style="width:30px;" src="{{ asset('/images/backend_images/products/small/'.$productDetails->image) }}">
+                          <img style="width:30px;" src="{{ asset('/images/backend_images/products/small/'.$productDetails->image) }}">  ||  <a href="{{ url('/admin/delete-product-image/') }}">Delete</a>
                           </div>
                       </div>
 
