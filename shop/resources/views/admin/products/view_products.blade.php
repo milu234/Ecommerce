@@ -76,7 +76,7 @@
                     <td class="center">
                         <a  href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                       <a href="{{ url('/admin/edit-product/'.$product->id ) }}" class="btn btn-primary btn-mini">Edit</a>
-                      <a id="delPro" href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}" class="btn btn-danger btn-mini">Delete</a>
+                      <a id="delPro" href="{{ url('/admin/delete-product-image/') }}" class="btn btn-danger btn-mini">Delete</a>
                       
                     </td>
 

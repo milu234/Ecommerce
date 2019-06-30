@@ -124,6 +124,10 @@ class ProductsController extends Controller
                  $data['description'] = '';
              }
 
+             if(empty($data['image'])){
+                 $data['image'] = "No Image";
+             }
+
 
 
             Product::where(['id'=>$id])->update([
@@ -170,7 +174,7 @@ class ProductsController extends Controller
 
 
 
-    //Delete Product Function
+    //Delete ProductImage Function
     public function deleteProductImage($id = NULL){
         Product::where(['id'=>$id])->update(['image'=>'']);
         return redirect()->back()->with('flash_message_success','Product Image had been deleted successfully');
