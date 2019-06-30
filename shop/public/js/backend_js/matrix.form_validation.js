@@ -219,4 +219,74 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+
+	///////////////////////////////Edit Products Validation////////////////////////////////////////////
+
+
+	$("#edit_product").validate({
+		rules:{
+			category_id:{
+				required: true,
+				
+			},
+
+			//Product Name
+			product_name:{
+				required: true,
+
+			},
+
+			//Product code Validation
+			product_code:{
+				required:true,	
+			},
+
+			//Product color
+			product_color:{
+				required:true,
+			},
+
+			//Product Description
+			product_description:{
+				required:true,
+			},
+
+			//Product Price
+			price:{
+				number:true,
+				required:true
+			},
+
+			//P
+			// description:{
+			// 	required:true,
+			
+			// },
+			// image:{
+			// 	required:true,
+			// }
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+
+
+
+
+
+// ************************************************Products**************************************************
+
+
+
 });

@@ -60,7 +60,8 @@ class ProductsController extends Controller
             }
 
             $product->save();
-            return redirect()->back()->with('flash_message_success','Product has been added successfully!!');
+            // return redirect()->back()->with('flash_message_success','Product has been added successfully!!');
+            return redirect('/admin/view-products')->with('flash_message_success','Product has been added successfully!');
         }
 
         $categories = Category::where(['parent_id'=>0])->get();
@@ -75,7 +76,7 @@ class ProductsController extends Controller
         return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
 
-
+    // View Product Function
     public function viewProducts(Request $request){
         $products = Product::get();
         $products = json_decode(json_encode($products));
@@ -85,4 +86,57 @@ class ProductsController extends Controller
         }
         return view('admin.products.view_products')->with(compact('products'));
     }
+
+
+
+
+    //Edit Produt Function
+    public function editProduct(Request $request, $id=NULL){
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            Product::where(['id'=>$id])->update([
+                'category_id' => $data['category_id'],
+                'product_name' => $data['product_name'],
+                'product_code' => $data['product_code'],
+                'product_color' => $data['product_color'],
+                'description' => $data['description'],
+                'price' => $data['price']
+
+            ]);
+
+            return redirect('/admin/view-products')->with('flash_message_success','Categories updated Successfully');
+        }
+       // echo "test"; die;
+        //Get Product Details
+        $productDetails = Product::where(['id'=>$id])->first();
+
+        //Categories Dropdown start
+        $categories = Category::where(['parent_id'=>0])->get();
+        $categories_dropdown = "<option value = '' selected disabled>Select</option>";
+        foreach($categories as $cat){
+            if($cat->id == $productDetails->category_id){
+                $selected = "selected";
+            }else{
+                $selected = "";
+            }
+            $categories_dropdown .= "<option value = '".$cat->id."' ".$selected." >".$cat->name."</option>";//Plaese use dot before equal to in foreach
+            $sub_categories = Category::where(['parent_id'=>$cat->id])->get();
+            foreach($sub_categories as $sub_cat){
+                if($sub_cat->id == $productDetails->category_id){
+                    $selected = "selected";
+                }else{
+                    $selected = "";
+                }
+                $categories_dropdown .= "<option value = '".$sub_cat->id."'  ".$selected."   >&nbsp;---&nbsp;".$sub_cat->name."</option>";
+            }
+        }
+        //Category Ends
+
+        return view('admin.products.edit_product')->with(compact('productDetails','categories_dropdown'));
+    }
+
+
+
 }
