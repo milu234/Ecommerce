@@ -190,8 +190,18 @@ class ProductsController extends Controller
 
     //Add Product Attribute Function
 
-    public function addAttributes(Request $requset, $id = NULL){
+    public function addAttributes(Request $request, $id = NULL){
         $productDetails = Product::where(['id'=>$id])->first();
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            foreach($data['sku']  as $key => $val ){
+                if(!empty($val)){
+                    
+                }
+            }
+            // echo "<pre>";print_r($data) ; die;
+        }
         return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
 }

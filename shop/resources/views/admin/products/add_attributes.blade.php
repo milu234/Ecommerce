@@ -44,7 +44,7 @@
                   <h5>Add Product Attributes</h5>
                 </div>
                 <div class="widget-content nopadding">
-                  <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/add-attribute'.$productDetails->id) }}" name="add_attribute" id="add_attribute" novalidate="novalidate">{{ csrf_field() }}
+                  <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/add-attributes/'.$productDetails->id) }}" name="add_attribute" id="add_attribute" novalidate="novalidate">{{ csrf_field() }}
                     
                     
            
