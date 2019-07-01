@@ -191,6 +191,7 @@ class ProductsController extends Controller
     //Add Product Attribute Function
 
     public function addAttributes(Request $requset, $id = NULL){
-        return view('admin.products.add_attributes');
+        $productDetails = Product::where(['id'=>$id])->first();
+        return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
 }

@@ -308,14 +308,38 @@ $(document).ready(function(){
 		 	function(){
 				 window.location.href="/admin/"+deleteFunction+"/"+id;
 			 });
-		
-	});
 
 
 
 
+
+			
+
+		});
 
 // ************************************************Products**************************************************
+
+
+
+$(document).ready(function(){
+	var maxField = 10; //Input fields increment limitation
+	var addButton = $('.add_button'); //Add button selector
+	var wrapper = $('.field_wrapper'); //Input field wrapper
+	var fieldHTML = '<div class="controls field_wrapper" style="margin-left:178px;"><div><input type="text" name="sku[]"  placeholder = "SKU"  style="width:120px"/>&nbsp;<input type="text" name="size[]" placeholder="Size" style="width:120px"/>&nbsp;<input type="text" name="price[]" placeholder = "Price"  style="width:120px"/>&nbsp;<input type="text" name="stock[]"  placeholder = "Stock"  style="width:120px"/><a href="javascript:void(0);" class="remove_button" title="Remove field">Remove</a></div></div>'; //New input field html 
+	var x = 1; //Initial field counter is 1
+	$(addButton).click(function(){ //Once add button is clicked
+		if(x < maxField){ //Check maximum number of input fields
+			x++; //Increment field counter
+			$(wrapper).append(fieldHTML); // Add field html
+		}
+	});
+	$(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+		e.preventDefault();
+		$(this).parent('div').remove(); //Remove field html
+		x--; //Decrement field counter
+	});
+});
+
 
 
 
