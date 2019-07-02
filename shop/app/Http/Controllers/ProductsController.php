@@ -10,6 +10,7 @@ use Session;
 use Image;
 use App\Category;
 use App\Product;
+use App\ProductsAttribute;
 
 class ProductsController extends Controller
 {
@@ -197,9 +198,16 @@ class ProductsController extends Controller
 
             foreach($data['sku']  as $key => $val ){
                 if(!empty($val)){
-                    
+                    $attribute = new ProductsAttribute; 
+                    $attribute->product_id = $id;
+                    $attribute->sku = $val;
+                    $attribute->size = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->save();
+
                 }
-            }
+            } 
             // echo "<pre>";print_r($data) ; die;
         }
         return view('admin.products.add_attributes')->with(compact('productDetails'));
